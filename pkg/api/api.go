@@ -5,9 +5,10 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/bickyeric/warda/pkg/api/handler"
-	"github.com/bickyeric/warda/pkg/wrapper/database"
-	"github.com/bickyeric/warda/pkg/wrapper/environment"
+	"github.com/bickyeric/garut/pkg/api/handler"
+	"github.com/bickyeric/garut/pkg/wrapper/database"
+	"github.com/bickyeric/garut/pkg/wrapper/environment"
+
 	"github.com/julienschmidt/httprouter"
 )
 
@@ -19,11 +20,8 @@ func Run() {
 	database.Connect()
 
 	router := httprouter.New()
-	router.GET("/graphql", handler.Handle)
-	router.GET("/healthz", func(w http.ResponseWriter, _ *http.Request, _ httprouter.Params) {
-		w.WriteHeader(http.StatusOK)
-		w.Write([]byte("OK"))
-	})
+	router.GET("/graphql", handler.GraphQL)
+	router.GET("/healthz", handler.Healthz)
 
 	if !environment.IsProduction() {
 		log.Println(fmt.Sprintf("port: %s", environment.APIPORT))

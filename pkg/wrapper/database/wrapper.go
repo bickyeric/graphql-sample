@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"fmt"
 
-	"github.com/bickyeric/warda/pkg/wrapper/environment"
+	"github.com/bickyeric/garut/pkg/wrapper/environment"
 
 	// mysql database driver
 	_ "github.com/go-sql-driver/mysql"

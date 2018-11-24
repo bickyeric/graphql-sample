@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/bickyeric/warda/pkg/api"
+	"github.com/bickyeric/garut/pkg/api"
 )
 
 func main() {
