@@ -5,75 +5,14 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/bickyeric/garut/pkg/model"
-
+	"github.com/bickyeric/garut/pkg/graphql/query"
 	"github.com/graphql-go/graphql"
 	"github.com/julienschmidt/httprouter"
 )
 
-var queryType = graphql.NewObject(
-	graphql.ObjectConfig{
-		Name: "Query",
-		Fields: graphql.Fields{
-			"salesList": &graphql.Field{
-				Type:        graphql.NewList(model.SalesType),
-				Description: "Get sales list",
-				Args: graphql.FieldConfigArgument{
-					"first": &graphql.ArgumentConfig{
-						Type: graphql.Int,
-					},
-					"offset": &graphql.ArgumentConfig{
-						Type: graphql.Int,
-					},
-				},
-				Resolve: func(p graphql.ResolveParams) (interface{}, error) {
-					first, _ := p.Args["first"].(int)
-					offset, _ := p.Args["offset"].(int)
-					return model.Sales{}.All(first, offset)
-				},
-			},
-
-			"customerList": &graphql.Field{
-				Type:        graphql.NewList(model.CustomerType),
-				Description: "Get customer list",
-				Args: graphql.FieldConfigArgument{
-					"first": &graphql.ArgumentConfig{
-						Type: graphql.Int,
-					},
-					"offset": &graphql.ArgumentConfig{
-						Type: graphql.Int,
-					},
-				},
-				Resolve: func(p graphql.ResolveParams) (interface{}, error) {
-					first, _ := p.Args["first"].(int)
-					offset, _ := p.Args["offset"].(int)
-					return model.Customer{}.All(first, offset)
-				},
-			},
-
-			"itemList": &graphql.Field{
-				Type:        graphql.NewList(model.ItemType),
-				Description: "Get item list",
-				Args: graphql.FieldConfigArgument{
-					"first": &graphql.ArgumentConfig{
-						Type: graphql.Int,
-					},
-					"offset": &graphql.ArgumentConfig{
-						Type: graphql.Int,
-					},
-				},
-				Resolve: func(p graphql.ResolveParams) (interface{}, error) {
-					first, _ := p.Args["first"].(int)
-					offset, _ := p.Args["offset"].(int)
-					return model.Item{}.All(first, offset)
-				},
-			},
-		},
-	})
-
 var schema, _ = graphql.NewSchema(
 	graphql.SchemaConfig{
-		Query: queryType,
+		Query: query.Root,
 	},
 )
 
