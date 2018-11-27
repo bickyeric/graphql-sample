@@ -1,7 +1,7 @@
 package object
 
 import (
-	"github.com/bickyeric/garut/pkg/model"
+	"github.com/bickyeric/graphql-sample/pkg/model"
 	"github.com/graphql-go/graphql"
 )
 

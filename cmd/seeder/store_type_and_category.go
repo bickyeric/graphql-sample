@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/bickyeric/garut/pkg/wrapper/database"
+	"github.com/bickyeric/graphql-sample/pkg/wrapper/database"
 )
 
 // StoreTypeCategorySeed ...

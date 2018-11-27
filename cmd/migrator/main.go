@@ -5,7 +5,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/bickyeric/garut/pkg/wrapper/environment"
+	"github.com/bickyeric/graphql-sample/pkg/wrapper/environment"
 	"github.com/nullbio/mig"
 )
 

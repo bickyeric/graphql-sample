@@ -5,9 +5,9 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/bickyeric/garut/pkg/api/handler"
-	"github.com/bickyeric/garut/pkg/wrapper/database"
-	"github.com/bickyeric/garut/pkg/wrapper/environment"
+	"github.com/bickyeric/graphql-sample/pkg/api/handler"
+	"github.com/bickyeric/graphql-sample/pkg/wrapper/database"
+	"github.com/bickyeric/graphql-sample/pkg/wrapper/environment"
 
 	"github.com/julienschmidt/httprouter"
 )

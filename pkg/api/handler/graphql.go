@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/bickyeric/garut/pkg/graphql/query"
+	"github.com/bickyeric/graphql-sample/pkg/graphql/query"
 	"github.com/graphql-go/graphql"
 	"github.com/julienschmidt/httprouter"
 )

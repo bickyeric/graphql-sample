@@ -1,6 +1,6 @@
 package model
 
-import "github.com/bickyeric/garut/pkg/wrapper/database"
+import "github.com/bickyeric/graphql-sample/pkg/wrapper/database"
 
 // StoreType ...
 type StoreType struct {

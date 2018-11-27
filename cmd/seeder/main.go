@@ -3,8 +3,8 @@ package main
 import (
 	"log"
 
-	"github.com/bickyeric/garut/pkg/wrapper/database"
-	"github.com/bickyeric/garut/pkg/wrapper/environment"
+	"github.com/bickyeric/graphql-sample/pkg/wrapper/database"
+	"github.com/bickyeric/graphql-sample/pkg/wrapper/environment"
 )
 
 func init() {

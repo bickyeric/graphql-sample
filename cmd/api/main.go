@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/bickyeric/garut/pkg/api"
+	"github.com/bickyeric/graphql-sample/pkg/api"
 )
 
 func main() {

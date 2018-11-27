@@ -22,7 +22,7 @@ var (
 )
 
 func init() {
-	gotenv.Load(os.Getenv("GOPATH") + "/src/github.com/bickyeric/garut/.env")
+	gotenv.Load(".env")
 
 	DATABASEHOST = databaseHost()
 	DATABASENAME = databaseName()
