@@ -8,6 +8,12 @@ type StoreType struct {
 	Name string `json:"name"`
 }
 
+// Create ...
+func (st StoreType) Create() (StoreType, error) {
+
+	return st, nil
+}
+
 // All ...
 func (st StoreType) All() ([]StoreType, error) {
 	var sts []StoreType
