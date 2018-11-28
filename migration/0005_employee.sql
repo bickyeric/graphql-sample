@@ -1,6 +1,6 @@
 -- +mig Up
 CREATE TABLE IF NOT EXISTS `employee` (
-  `id` INT UNSIGNED NOT NULL,
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `outlet_id` INT UNSIGNED NOT NULL,
   `store_id` INT UNSIGNED NOT NULL,
   `first_name` VARCHAR(50),

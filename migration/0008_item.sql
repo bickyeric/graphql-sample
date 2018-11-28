@@ -1,12 +1,13 @@
 -- +mig Up
 CREATE TABLE IF NOT EXISTS `item` (
-  `id` INT UNSIGNED NOT NULL,
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `outlet_id` INT UNSIGNED NOT NULL,
   `store_id` INT UNSIGNED NOT NULL,
-  `name` VARCHAR(255),
-  `category_id` INT UNSIGNED,
-  `description` VARCHAR(255),
+  `name` VARCHAR(255) NOT NULL,
+  `category_id` INT UNSIGNED NULL,
+  `description` VARCHAR(255) NOT NULL,
   `modifier_id` INT UNSIGNED NULL,
+  `image` VARCHAR(255) NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_item_category1_idx` (`category_id` ASC),
   INDEX `fk_item_modifier1_idx` (`modifier_id` ASC),

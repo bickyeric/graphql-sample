@@ -1,6 +1,8 @@
 package model
 
-import "github.com/bickyeric/graphql-sample/pkg/wrapper/database"
+import (
+	"github.com/bickyeric/graphql-sample/pkg/wrapper/database"
+)
 
 // Outlet ...
 type Outlet struct {
@@ -15,15 +17,26 @@ type Outlet struct {
 	StoreID     int    `json:"store_id"`
 }
 
-// All ...
-func (o Outlet) All(first, offset int) ([]Outlet, error) {
-	if offset < 1 {
-		offset = 20
+// Create ...
+func (o Outlet) Create() (Outlet, error) {
+	row, err := database.Connection.Exec(
+		`INSERT INTO outlet(name, address, phone_number, city, state, status, zip, store_id)
+		VALUES (?, ?, ?, ?, ?, ?, ?, ?)`, o.Name, o.Address, o.PhoneNumber, o.City, o.State, o.Status, o.Zip, o.StoreID,
+	)
+	if err != nil {
+		return o, err
 	}
+	id, _ := row.LastInsertId()
+	o.ID = int(id)
+	return o, nil
+}
+
+// All ...
+func (o Outlet) All() ([]Outlet, error) {
 	var outlets []Outlet
 	rows, err := database.Connection.Query(
 		`SELECT id, name, address, phone_number, city, state, status, zip, store_id
-		FROM outlet LIMIT ?,?`, first, offset,
+		FROM outlet`,
 	)
 	if err != nil {
 		return nil, err
@@ -59,4 +72,9 @@ func (o Outlet) GetByStoreID() ([]Outlet, error) {
 // Store ...
 func (o *Outlet) Store() (Store, error) {
 	return Store{ID: o.StoreID}.GetByID()
+}
+
+// ItemCategory ...
+func (o *Outlet) ItemCategory() ([]ItemCategory, error) {
+	return ItemCategory{StoreID: o.StoreID, OutletID: o.ID}.GetByOutletID()
 }

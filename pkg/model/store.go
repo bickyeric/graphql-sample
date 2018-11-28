@@ -23,15 +23,26 @@ type Store struct {
 	Image       string `json:"image"`
 }
 
-// All ...
-func (s Store) All(first, offset int) ([]Store, error) {
-	if offset < 1 {
-		offset = 20
+// Create ...
+func (s Store) Create() (Store, error) {
+	row, err := database.Connection.Exec(
+		`INSERT INTO store(category_id, type_id, name, address, city, state, zip, email, description, website, twitter, facebook, instagram, image)
+		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`, s.CategoryID, s.TypeID, s.Name, s.Address, s.City, s.State, s.Zip, s.Email, s.Description, s.Website, s.Twitter, s.Facebook, s.Instagram, s.Image,
+	)
+	if err != nil {
+		return s, err
 	}
+	id, _ := row.LastInsertId()
+	s.ID = int(id)
+	return s, nil
+}
+
+// All ...
+func (s Store) All() ([]Store, error) {
 	var stores []Store
 	rows, err := database.Connection.Query(
 		`SELECT id, category_id, type_id, name, address, city, state, zip, email, description, website, twitter, facebook, instagram, image
-		FROM store LIMIT ?,?`, first, offset,
+		FROM store`,
 	)
 	if err != nil {
 		return nil, err

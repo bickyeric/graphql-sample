@@ -1,6 +1,8 @@
 package model
 
-import "github.com/bickyeric/graphql-sample/pkg/wrapper/database"
+import (
+	"github.com/bickyeric/graphql-sample/pkg/wrapper/database"
+)
 
 // StoreType ...
 type StoreType struct {
@@ -10,7 +12,14 @@ type StoreType struct {
 
 // Create ...
 func (st StoreType) Create() (StoreType, error) {
-
+	row, err := database.Connection.Exec(
+		`INSERT INTO store_type(name) VALUES (?)`, st.Name,
+	)
+	if err != nil {
+		return st, err
+	}
+	id, _ := row.LastInsertId()
+	st.ID = int(id)
 	return st, nil
 }
 

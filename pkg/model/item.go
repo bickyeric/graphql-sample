@@ -1,7 +1,7 @@
 package model
 
 import (
-	"time"
+	"database/sql"
 
 	"github.com/bickyeric/graphql-sample/pkg/wrapper/database"
 	"github.com/graphql-go/graphql"
@@ -9,13 +9,32 @@ import (
 
 // Item ...
 type Item struct {
-	ID          int       `json:"id"`
-	Name        string    `json:"name"`
-	Price       int       `json:"price"`
-	Description string    `json:"description"`
-	Image       string    `json:"image"`
-	CreatedAt   time.Time `json:"created_at"`
-	UpdatedAt   time.Time `json:"updated_at"`
+	ID          int    `json:"id"`
+	OutletID    int    `json:"outlet_id"`
+	StoreID     int    `json:"store_id"`
+	Name        string `json:"name"`
+	CategoryID  int    `json:"category_id"`
+	Description string `json:"description"`
+	ModifierID  int    `json:"modifier_id"`
+	Image       string `json:"image"`
+
+	categoryID sql.NullInt64
+	modifierID sql.NullInt64
+	image      sql.NullString
+}
+
+// Create ...
+func (i Item) Create() (Item, error) {
+	row, err := database.Connection.Exec(
+		`INSERT INTO item(outlet_id, store_id, name, category_id, description, modifier_id, image)
+		VALUES (?, ?, ?, ?, ?, ?, ?)`, i.OutletID, i.StoreID, i.Name, NewNullInt64(i.CategoryID), i.Description, NewNullInt64(i.ModifierID), NewNullString(i.Image),
+	)
+	if err != nil {
+		return i, err
+	}
+	id, _ := row.LastInsertId()
+	i.ID = int(id)
+	return i, nil
 }
 
 // ItemType ...
@@ -49,7 +68,7 @@ var ItemType = graphql.NewObject(
 )
 
 // All ...
-func (it Item) All(first, offset int) ([]Item, error) {
+func (i Item) All(first, offset int) ([]Item, error) {
 	if offset < 1 {
 		offset = 20
 	}
@@ -64,7 +83,7 @@ func (it Item) All(first, offset int) ([]Item, error) {
 
 	for rows.Next() {
 		var i Item
-		err := rows.Scan(&i.ID, &i.Name, &i.Price, &i.Description, &i.Image, &i.CreatedAt, &i.UpdatedAt)
+		err := rows.Scan(&i.ID, &i.Name, &i.Description, &i.Image)
 		if err != nil {
 			return nil, err
 		}

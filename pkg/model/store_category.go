@@ -1,12 +1,25 @@
 package model
 
-import "github.com/bickyeric/graphql-sample/pkg/wrapper/database"
+import (
+	"github.com/bickyeric/graphql-sample/pkg/wrapper/database"
+)
 
 // StoreCategory ...
 type StoreCategory struct {
 	ID     int    `json:"id"`
 	Name   string `json:"name"`
 	TypeID int    `json:"type_id"`
+}
+
+// Create ...
+func (sc StoreCategory) Create() (StoreCategory, error) {
+	_, err := database.Connection.Exec(
+		`INSERT INTO store_category(id, name, type_id) VALUES (?, ?, ?)`, sc.ID, sc.Name, sc.TypeID,
+	)
+	if err != nil {
+		return sc, err
+	}
+	return sc, nil
 }
 
 // All ...
