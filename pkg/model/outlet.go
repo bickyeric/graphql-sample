@@ -78,3 +78,8 @@ func (o *Outlet) Store() (Store, error) {
 func (o *Outlet) ItemCategory() ([]ItemCategory, error) {
 	return ItemCategory{StoreID: o.StoreID, OutletID: o.ID}.GetByOutletID()
 }
+
+// Employee ...
+func (o *Outlet) Employee() ([]Employee, error) {
+	return Employee{StoreID: o.StoreID, OutletID: o.ID}.GetByOutletID()
+}

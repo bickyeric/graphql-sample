@@ -27,19 +27,25 @@ func main() {
 }
 
 var seedNames = []string{
-	"store_type_and_store_category",
-	"store",
-	"outlet",
-	"employee",
-	"item_category",
-	"item",
+	// "store_type_and_store_category",
+	// "store",
+	// "outlet",
+	// "employee",
+	// "item_category",
+	// "item",
+	// "variant",
+	// "customer",
+	"transaction",
 }
 
 var funcs = map[string](func() error){
+	"customer":                      customerSeed,
+	"employee":                      employeeSeed,
+	"item":                          itemSeed,
+	"item_category":                 itemCategorySeed,
+	"outlet":                        outletSeed,
 	"store_type_and_store_category": storeTypeCategorySeed,
 	"store":                         storeSeed,
-	"outlet":                        outletSeed,
-	"employee":                      employeeSeed,
-	"item_category":                 itemCategorySeed,
-	"item":                          itemSeed,
+	"transaction":                   transactionSeed,
+	"variant":                       variantSeed,
 }

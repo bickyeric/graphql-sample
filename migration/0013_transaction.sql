@@ -1,11 +1,11 @@
 -- +mig Up
 CREATE TABLE IF NOT EXISTS `transaction` (
   `id` INT UNSIGNED NOT NULL,
-  `receipt_number` VARCHAR(45),
+  `receipt_number` VARCHAR(45) NULL,
   `employee_id` INT UNSIGNED NOT NULL,
   `customer_id` INT UNSIGNED NULL,
-  `comment` TEXT,
-  `status` VARCHAR(15),
+  `comment` TEXT NULL,
+  `status` VARCHAR(15) NOT NULL,
   `discount_id` INT UNSIGNED NULL,
   `tax_id` INT UNSIGNED NULL,
   `created_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,

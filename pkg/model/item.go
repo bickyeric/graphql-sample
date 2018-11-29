@@ -68,14 +68,11 @@ var ItemType = graphql.NewObject(
 )
 
 // All ...
-func (i Item) All(first, offset int) ([]Item, error) {
-	if offset < 1 {
-		offset = 20
-	}
+func (i Item) All() ([]Item, error) {
 	var items []Item
 	rows, err := database.Connection.Query(
-		`SELECT id, name, price, description, image, created_at, updated_at
-		FROM items LIMIT ?,?`, first, offset,
+		`SELECT id, outlet_id, store_id, name, category_id, description, modifier_id, image
+		FROM item`,
 	)
 	if err != nil {
 		return nil, err
@@ -83,9 +80,18 @@ func (i Item) All(first, offset int) ([]Item, error) {
 
 	for rows.Next() {
 		var i Item
-		err := rows.Scan(&i.ID, &i.Name, &i.Description, &i.Image)
+		err := rows.Scan(&i.ID, &i.OutletID, &i.StoreID, &i.Name, &i.categoryID, &i.Description, &i.modifierID, &i.image)
 		if err != nil {
 			return nil, err
+		}
+		if i.categoryID.Valid {
+			i.CategoryID = int(i.categoryID.Int64)
+		}
+		if i.modifierID.Valid {
+			i.ModifierID = int(i.modifierID.Int64)
+		}
+		if i.image.Valid {
+			i.Image = i.image.String
 		}
 		items = append(items, i)
 	}

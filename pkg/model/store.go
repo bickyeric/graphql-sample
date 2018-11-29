@@ -87,3 +87,8 @@ func (s Store) GetByID() (Store, error) {
 func (s *Store) Outlet() ([]Outlet, error) {
 	return Outlet{StoreID: s.ID}.GetByStoreID()
 }
+
+// Customer ...
+func (s *Store) Customer() ([]Customer, error) {
+	return Customer{StoreID: s.ID}.GetByStoreID()
+}
