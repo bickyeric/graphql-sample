@@ -1,21 +1,23 @@
-> type **Store** {
-> id: Int
-> name: String
-> address: String
-> city: String
-> state: String
-> zip: String
-> email: String
-> description: String
-> website: String
-> twitter: String
-> facebook: String
-> instagram: String
-> image: String
-> outlet: **Outlet!**
-> type: **StoreType!**
-> category: **Category!**
-> }
+```
+type **Store** {
+id: Int
+name: String
+address: String
+city: String
+state: String
+zip: String
+email: String
+description: String
+website: String
+twitter: String
+facebook: String
+instagram: String
+image: String
+outlet: **Outlet!**
+type: **StoreType!**
+category: **Category!**
+}
+```
 
 > type **StoreType** {
 > id: Int
