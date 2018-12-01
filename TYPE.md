@@ -1,4 +1,4 @@
-## type **Store**
+## Store
 Attribute Name | Data Type
 ------------ | :-------------:
 id | Int
@@ -14,19 +14,19 @@ twitter | String
 facebook | String
 instagram | String
 image | String
-outlet | **Outlet!**
-type | **StoreType!**
-category | **Category!**
+outlet | [Outlet](#outlet)
+type | [StoreType](#storetype)
+category | [Category](#category)
 
-## type **StoreType**
+## StoreType
 Attribute Name | Data Type
 ------------ | :-------------:
 id | Int
 name | String
-category | **StoreCategory**
-store | **Store**
+category | [StoreCategory](#storecategory)
+store | [Store](#store)
 
-## type **Outlet**
+## Outlet
 Attribute Name | Data Type
 ------------ | :-------------:
 id | Int
@@ -37,11 +37,11 @@ city | String
 state | String
 status | Boolean
 zip | String
-store | **Store!**
+store | [Store](#store)
 
-## type **StoreCategory**
+## StoreCategory
 Attribute Name | Data Type
 ------------ | :-------------:
 id | Int
 name | String
-type | **StoreType**
+type | [StoreType](#storetype)
