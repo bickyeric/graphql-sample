@@ -1,4 +1,4 @@
-```
+## Store
 type **Store** {
 id: Int
 name: String
@@ -17,7 +17,6 @@ outlet: **Outlet!**
 type: **StoreType!**
 category: **Category!**
 }
-```
 
 > type **StoreType** {
 > id: Int
