@@ -54,3 +54,13 @@ func (st StoreType) GetByID() (StoreType, error) {
 	}
 	return st, nil
 }
+
+// Category ...
+func (st *StoreType) Category() ([]StoreCategory, error) {
+	return StoreCategory{TypeID: st.ID}.GetByType()
+}
+
+// Store ...
+func (st *StoreType) Store() ([]Store, error) {
+	return Store{TypeID: st.ID}.GetByType()
+}

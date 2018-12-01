@@ -24,8 +24,15 @@ func init() {
 	StoreTypeType.AddFieldConfig("category", &graphql.Field{
 		Type: graphql.NewList(StoreCategoryType),
 		Resolve: func(p graphql.ResolveParams) (interface{}, error) {
-			sc := p.Source.(model.StoreType)
-			return model.StoreCategory{TypeID: sc.ID}.GetByTypeID()
+			st := p.Source.(model.StoreType)
+			return st.Category()
+		},
+	})
+	StoreTypeType.AddFieldConfig("store", &graphql.Field{
+		Type: graphql.NewList(StoreType),
+		Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+			st := p.Source.(model.StoreType)
+			return st.Store()
 		},
 	})
 }

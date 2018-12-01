@@ -10,9 +10,18 @@ func transactionSeed() error {
 		return err
 	}
 	for _, o := range outlet {
-		_, err := o.Employee()
+		employees, err := o.Employee()
 		if err != nil {
 			return err
+		}
+		for _, e := range employees {
+			_, err := model.Transaction{
+				EmployeeID: e.ID,
+				Status:     "PAID",
+			}.Create()
+			if err != nil {
+				return err
+			}
 		}
 	}
 	return nil

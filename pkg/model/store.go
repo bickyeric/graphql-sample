@@ -83,6 +83,29 @@ func (s Store) GetByID() (Store, error) {
 	return s, nil
 }
 
+// GetByType ...
+func (s Store) GetByType() ([]Store, error) {
+	var stores []Store
+	rows, err := database.Connection.Query(
+		`SELECT id, category_id, type_id, name, address, city, state, zip, email, description, website, twitter, facebook, instagram, image
+		FROM store WHERE type_id=?`, s.TypeID,
+	)
+	if err != nil {
+		return nil, err
+	}
+
+	for rows.Next() {
+		var s Store
+		err := rows.Scan(&s.ID, &s.CategoryID, &s.TypeID, &s.Name, &s.Address, &s.City, &s.State, &s.Zip, &s.Email, &s.Description, &s.Website, &s.Twitter, &s.Facebook, &s.Instagram, &s.Image)
+		if err != nil {
+			return nil, err
+		}
+		stores = append(stores, s)
+	}
+
+	return stores, nil
+}
+
 // Outlet ...
 func (s *Store) Outlet() ([]Outlet, error) {
 	return Outlet{StoreID: s.ID}.GetByStoreID()

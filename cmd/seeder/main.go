@@ -27,14 +27,14 @@ func main() {
 }
 
 var seedNames = []string{
-	// "store_type_and_store_category",
-	// "store",
-	// "outlet",
-	// "employee",
-	// "item_category",
-	// "item",
-	// "variant",
-	// "customer",
+	"store_type_and_store_category",
+	"store",
+	"outlet",
+	"employee",
+	"item_category",
+	"item",
+	"variant",
+	"customer",
 	"transaction",
 }
 

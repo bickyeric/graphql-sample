@@ -1,6 +1,7 @@
 package object
 
 import (
+	"github.com/bickyeric/graphql-sample/pkg/model"
 	"github.com/graphql-go/graphql"
 )
 
@@ -15,9 +16,16 @@ var StoreCategoryType = graphql.NewObject(
 			"name": &graphql.Field{
 				Type: graphql.String,
 			},
-			"type_id": &graphql.Field{
-				Type: graphql.Int,
-			},
 		},
 	},
 )
+
+func init() {
+	StoreCategoryType.AddFieldConfig("type", &graphql.Field{
+		Type: StoreTypeType,
+		Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+			st := p.Source.(model.StoreCategory)
+			return st.Type()
+		},
+	})
+}

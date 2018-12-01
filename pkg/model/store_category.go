@@ -54,8 +54,8 @@ func (sc StoreCategory) GetByID() (StoreCategory, error) {
 	return sc, nil
 }
 
-// GetByTypeID ...
-func (sc StoreCategory) GetByTypeID() ([]StoreCategory, error) {
+// GetByType ...
+func (sc StoreCategory) GetByType() ([]StoreCategory, error) {
 	var scs []StoreCategory
 	rows, err := database.Connection.Query(
 		`SELECT id, name, type_id

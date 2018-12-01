@@ -34,9 +34,6 @@ var OutletType = graphql.NewObject(
 			"zip": &graphql.Field{
 				Type: graphql.String,
 			},
-			"store_id": &graphql.Field{
-				Type: graphql.Int,
-			},
 		},
 	},
 )

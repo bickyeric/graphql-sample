@@ -36,7 +36,7 @@ func (e Employee) Create() (Employee, error) {
 func (e Employee) GetByOutletID() ([]Employee, error) {
 	var employees []Employee
 	rows, err := database.Connection.Query(
-		`SELECT outlet_id, store_id, first_name, last_name, phone_number, email, password, confirmed, active
+		`SELECT id, outlet_id, store_id, first_name, last_name, phone_number, email, password, confirmed, active
 		FROM employee
 		WHERE outlet_id=? AND store_id=?`, e.OutletID, e.StoreID,
 	)
@@ -45,7 +45,7 @@ func (e Employee) GetByOutletID() ([]Employee, error) {
 	}
 
 	for rows.Next() {
-		rows.Scan(&e.OutletID, &e.StoreID, &e.FirstName, &e.LastName, &e.PhoneNumber, &e.Email, &e.Password, &e.Confirmed, &e.Active)
+		rows.Scan(&e.ID, &e.OutletID, &e.StoreID, &e.FirstName, &e.LastName, &e.PhoneNumber, &e.Email, &e.Password, &e.Confirmed, &e.Active)
 		employees = append(employees, e)
 	}
 

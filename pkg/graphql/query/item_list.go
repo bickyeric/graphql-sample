@@ -17,8 +17,8 @@ var itemList = &graphql.Field{
 		},
 	},
 	Resolve: func(p graphql.ResolveParams) (interface{}, error) {
-		first, _ := p.Args["first"].(int)
-		offset, _ := p.Args["offset"].(int)
-		return model.Item{}.All(first, offset)
+		// first, _ := p.Args["first"].(int)
+		// offset, _ := p.Args["offset"].(int)
+		return model.Item{}.All()
 	},
 }

@@ -30,8 +30,8 @@ type Transaction struct {
 // Create ...
 func (t Transaction) Create() (Transaction, error) {
 	row, err := database.Connection.Exec(
-		`INSERT INTO transaction(receipt_number, employee_id customer_id, comment, status, discount_id, tax_id)
-		VALUES (?, ?, ?)`, NewNullString(t.ReceiptNumber), t.EmployeeID, NewNullInt64(t.CustomerID), NewNullString(t.Comment), t.Status, NewNullInt64(t.DiscountID), NewNullInt64(t.TaxID),
+		`INSERT INTO transaction(receipt_number, employee_id, customer_id, comment, status, discount_id, tax_id)
+		VALUES (?, ?, ?, ?, ?, ?, ?)`, NewNullString(t.ReceiptNumber), t.EmployeeID, NewNullInt64(t.CustomerID), NewNullString(t.Comment), t.Status, NewNullInt64(t.DiscountID), NewNullInt64(t.TaxID),
 	)
 	if err != nil {
 		return t, err
