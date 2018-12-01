@@ -1,4 +1,4 @@
-### type **Store**
+## type **Store**
 Attribute Name | Data Type
 ------------ | -------------
 id | Int
