@@ -1,6 +1,6 @@
 ## type **Store**
 Attribute Name | Data Type
------------- | -------------
+------------ | :-------------:
 id | Int
 name | String
 address | String
