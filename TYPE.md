@@ -14,7 +14,7 @@ twitter | String
 facebook | String
 instagram | String
 image | String
-outlet | [Outlet](#outlet)
+outlet | [[Outlet](#outlet)]
 type | [StoreType](#storetype)
 category | [Category](#category)
 
