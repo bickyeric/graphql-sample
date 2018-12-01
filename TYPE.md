@@ -14,7 +14,7 @@ twitter | String
 facebook | String
 instagram | String
 image | String
-outlet | [[Outlet](#outlet)]
+outlet | [ [Outlet](#outlet) ]
 type | [StoreType](#storetype)
 category | [Category](#category)
 
@@ -23,8 +23,8 @@ Attribute Name | Data Type
 ------------ | :-------------:
 id | Int
 name | String
-category | [StoreCategory](#storecategory)
-store | [Store](#store)
+category | [ [StoreCategory](#storecategory) ]
+store | [ [Store](#store) ]
 
 ## Outlet
 Attribute Name | Data Type
