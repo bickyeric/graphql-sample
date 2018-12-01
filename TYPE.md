@@ -18,27 +18,30 @@ outlet | **Outlet!**
 type | **StoreType!**
 category | **Category!**
 
-> type **StoreType** {
-> id: Int
-> name: String
-> category: **StoreCategory**
-> store: **Store**
-> }
+## type **StoreType**
+Attribute Name | Data Type
+------------ | :-------------:
+id | Int
+name | String
+category | **StoreCategory**
+store | **Store**
 
-> type **Outlet** {
-> id: Int
-> name: String
-> address: String
-> phone_number: String
-> city: String
-> state: String
-> status: Boolean
-> zip: String
-> store: **Store!**
-> }
+## type **Outlet**
+Attribute Name | Data Type
+------------ | :-------------:
+id | Int
+name | String
+address | String
+phone_number | String
+city | String
+state | String
+status | Boolean
+zip | String
+store | **Store!**
 
-> type **StoreCategory** {
-> id: Int
-> name: String
-> type: **StoreType**
-> }
+## type **StoreCategory** {
+Attribute Name | Data Type
+------------ | :-------------:
+id | Int
+name | String
+type | **StoreType**
