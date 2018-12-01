@@ -43,3 +43,7 @@
   ```sh
   make run
   ```
+
+## References
+
+- [Type](https://github.com/bickyeric/graphql-sample/blob/master/TYPE.md)

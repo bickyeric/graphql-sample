@@ -39,7 +39,7 @@ status | Boolean
 zip | String
 store | **Store!**
 
-## type **StoreCategory** {
+## type **StoreCategory**
 Attribute Name | Data Type
 ------------ | :-------------:
 id | Int
