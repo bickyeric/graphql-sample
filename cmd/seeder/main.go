@@ -31,7 +31,7 @@ var seedNames = []string{
 	"store",
 	"outlet",
 	"employee",
-	// "item_category",
+	"item_category",
 	// "item",
 	// "variant",
 	// "customer",

@@ -82,4 +82,11 @@ func init() {
 			return s.Employee()
 		},
 	})
+	StoreType.AddFieldConfig("item_category", &graphql.Field{
+		Type: graphql.NewList(ItemCategoryType),
+		Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+			s := p.Source.(model.Store)
+			return s.ItemCategory()
+		},
+	})
 }

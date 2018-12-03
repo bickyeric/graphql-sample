@@ -143,3 +143,8 @@ func (s *Store) Customer() ([]Customer, error) {
 func (s *Store) Employee() ([]Employee, error) {
 	return Employee{StoreID: s.ID}.GetByStoreID()
 }
+
+// ItemCategory ...
+func (s *Store) ItemCategory() ([]ItemCategory, error) {
+	return ItemCategory{StoreID: s.ID}.GetByStoreID()
+}

@@ -13,8 +13,8 @@ CREATE TABLE IF NOT EXISTS `item` (
   INDEX `fk_item_modifier1_idx` (`modifier_id` ASC),
   INDEX `fk_item_outlet1_idx` (`outlet_id` ASC, `store_id` ASC),
   CONSTRAINT `fk_item_category1`
-    FOREIGN KEY (`category_id`)
-    REFERENCES `item_category` (`id`)
+    FOREIGN KEY (`store_id`, `outlet_id`, `category_id`)
+    REFERENCES `item_category` (`store_id`, `outlet_id`, `id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `fk_item_modifier1`

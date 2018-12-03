@@ -34,7 +34,7 @@ outlet | [ [Outlet](#outlet) ]!
 type | [StoreType](#storetype)!
 category | [StoreCategory](#storecategory)!
 employee | [ [Employee](#employee) ]!
-item_category | [ [ItemCategory](#itemcategory) ]! | Not Implemented
+item_category | [ [ItemCategory](#itemcategory) ]!
 item_modifier | [ [Modifier](#modifier) ]! | Not Implemented
 item | [ [Item](#item) ]! | Not Implemented
 customer | [ [Customer](#customer) ]! | Not Implemented

@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS `item_category` (
   `name` VARCHAR(45) NOT NULL,
   `outlet_id` INT UNSIGNED NOT NULL,
   `store_id` INT UNSIGNED NOT NULL,
-  PRIMARY KEY (`id`),
+  PRIMARY KEY (`store_id`, `outlet_id`, `id`),
   INDEX `fk_item_category_outlet1_idx` (`outlet_id` ASC, `store_id` ASC),
   CONSTRAINT `fk_item_category_outlet1`
     FOREIGN KEY (`store_id`, `outlet_id`)
