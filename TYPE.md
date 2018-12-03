@@ -15,8 +15,8 @@ type | [StoreType](#storetype)!
 store | [ [Store](#store) ]!
 
 ## Store
-Attribute Name | Data Type
------------- | :-------------:
+Attribute Name | Data Type | Comment
+ ------------  | :-------: | :-----:
 id | Int!
 name | String!
 address | String!
@@ -33,13 +33,13 @@ image | String
 outlet | [ [Outlet](#outlet) ]!
 type | [StoreType](#storetype)!
 category | [StoreCategory](#storecategory)!
-employee | [ [Employee](#employee) ]!
-`item_category | [ [ItemCategory](#itemcategory) ]!`
-`item_modifier | [ [Modifier](#modifier) ]!`
-`item | [ [Item](#item) ]!`
-`customer | [ [Customer](#customer) ]!`
-`discount | [ [Discount](#discount) ]!`
-`tax | [ [Tax](#tax) ]!`
+employee | [ [Employee](#employee) ]! | Not Implemented
+item_category | [ [ItemCategory](#itemcategory) ]! | Not Implemented
+item_modifier | [ [Modifier](#modifier) ]! | Not Implemented
+item | [ [Item](#item) ]! | Not Implemented
+customer | [ [Customer](#customer) ]! | Not Implemented
+discount | [ [Discount](#discount) ]! | Not Implemented
+tax | [ [Tax](#tax) ]! | Not Implemented
 
 ## Outlet
 Attribute Name | Data Type
