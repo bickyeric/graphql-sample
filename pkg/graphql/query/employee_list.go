@@ -6,10 +6,10 @@ import (
 	"github.com/graphql-go/graphql"
 )
 
-var outletList = &graphql.Field{
-	Type:        graphql.NewList(object.OutletType),
-	Description: "Get outlet list",
+var employeeList = &graphql.Field{
+	Type:        graphql.NewList(object.EmployeeType),
+	Description: "Get employee list",
 	Resolve: func(p graphql.ResolveParams) (interface{}, error) {
-		return model.Outlet{}.All()
+		return model.Employee{}.All()
 	},
 }

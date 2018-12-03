@@ -10,16 +10,16 @@ CREATE TABLE IF NOT EXISTS `store` (
   `zip` VARCHAR(255) NOT NULL,
   `email` VARCHAR(50) NOT NULL,
   `description` VARCHAR(255) NOT NULL,
-  `website` VARCHAR(150) NOT NULL,
-  `twitter` VARCHAR(50) NOT NULL,
-  `facebook` VARCHAR(50) NOT NULL,
-  `instagram` VARCHAR(50) NOT NULL,
-  `image` VARCHAR(255) NOT NULL,
+  `website` VARCHAR(150) NULL,
+  `twitter` VARCHAR(50) NULL,
+  `facebook` VARCHAR(50) NULL,
+  `instagram` VARCHAR(50) NULL,
+  `image` VARCHAR(255) NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_store_type_category1_idx` (`category_id` ASC, `type_id` ASC),
   CONSTRAINT `fk_store_type_category1`
-    FOREIGN KEY (`category_id` , `type_id`)
-    REFERENCES `store_category` (`id` , `type_id`)
+    FOREIGN KEY (`type_id`, `category_id`)
+    REFERENCES `store_category` (`type_id`, `id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE
 );

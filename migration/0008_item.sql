@@ -1,6 +1,6 @@
 -- +mig Up
 CREATE TABLE IF NOT EXISTS `item` (
-  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id` INT UNSIGNED NOT NULL,
   `outlet_id` INT UNSIGNED NOT NULL,
   `store_id` INT UNSIGNED NOT NULL,
   `name` VARCHAR(255) NOT NULL,
@@ -23,8 +23,8 @@ CREATE TABLE IF NOT EXISTS `item` (
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `fk_item_outlet1`
-    FOREIGN KEY (`outlet_id` , `store_id`)
-    REFERENCES `outlet` (`id` , `store_id`)
+    FOREIGN KEY (`store_id`, `outlet_id`)
+    REFERENCES `outlet` (`store_id`, `id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE
 );

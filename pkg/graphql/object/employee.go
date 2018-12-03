@@ -5,52 +5,52 @@ import (
 	"github.com/graphql-go/graphql"
 )
 
-// OutletType ...
-var OutletType = graphql.NewObject(
+// EmployeeType ...
+var EmployeeType = graphql.NewObject(
 	graphql.ObjectConfig{
-		Name: "Outlet",
+		Name: "Employee",
 		Fields: graphql.Fields{
 			"id": &graphql.Field{
 				Type: graphql.Int,
 			},
-			"name": &graphql.Field{
+			"first_name": &graphql.Field{
 				Type: graphql.String,
 			},
-			"address": &graphql.Field{
+			"last_name": &graphql.Field{
 				Type: graphql.String,
 			},
 			"phone_number": &graphql.Field{
 				Type: graphql.String,
 			},
-			"city": &graphql.Field{
+			"email": &graphql.Field{
 				Type: graphql.String,
 			},
-			"state": &graphql.Field{
+			"password": &graphql.Field{
 				Type: graphql.String,
 			},
-			"status": &graphql.Field{
+			"confirmed": &graphql.Field{
 				Type: graphql.Boolean,
 			},
-			"zip": &graphql.Field{
-				Type: graphql.String,
+			"active": &graphql.Field{
+				Type: graphql.Boolean,
 			},
 		},
 	},
 )
 
 func init() {
-	OutletType.AddFieldConfig("store", &graphql.Field{
-		Type: StoreType,
+	EmployeeType.AddFieldConfig("outlet", &graphql.Field{
+		Type: OutletType,
 		Resolve: func(p graphql.ResolveParams) (interface{}, error) {
-			o := p.Source.(model.Outlet)
-			return o.Store()
+			e := p.Source.(model.Employee)
+			return e.Outlet()
 		},
 	})
-	OutletType.AddFieldConfig("employee", &graphql.Field{
-		Type: graphql.NewList(EmployeeType),
+	EmployeeType.AddFieldConfig("store", &graphql.Field{
+		Type: StoreType,
 		Resolve: func(p graphql.ResolveParams) (interface{}, error) {
-			o := p.Source.(model.Outlet)
-			return o.Employee()
+			e := p.Source.(model.Employee)
+			return e.Store()
 		},
 	})
 }

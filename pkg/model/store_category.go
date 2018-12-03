@@ -73,6 +73,11 @@ func (sc StoreCategory) GetByType() ([]StoreCategory, error) {
 }
 
 // Type ...
-func (sc StoreCategory) Type() (StoreType, error) {
+func (sc *StoreCategory) Type() (StoreType, error) {
 	return StoreType{ID: sc.TypeID}.GetByID()
+}
+
+// Store ...
+func (sc *StoreCategory) Store() ([]Store, error) {
+	return Store{CategoryID: sc.ID, TypeID: sc.TypeID}.GetByCategory()
 }

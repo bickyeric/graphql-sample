@@ -33,7 +33,7 @@ image | String
 outlet | [ [Outlet](#outlet) ]!
 type | [StoreType](#storetype)!
 category | [StoreCategory](#storecategory)!
-employee | [ [Employee](#employee) ]! | Not Implemented
+employee | [ [Employee](#employee) ]!
 item_category | [ [ItemCategory](#itemcategory) ]! | Not Implemented
 item_modifier | [ [Modifier](#modifier) ]! | Not Implemented
 item | [ [Item](#item) ]! | Not Implemented
@@ -42,8 +42,8 @@ discount | [ [Discount](#discount) ]! | Not Implemented
 tax | [ [Tax](#tax) ]! | Not Implemented
 
 ## Outlet
-Attribute Name | Data Type
------------- | :-------------:
+Attribute Name | Data Type | Comment
+ ------------  | :-------: | :-----:
 id | Int!
 name | String!
 address | String!
@@ -54,15 +54,15 @@ status | Boolean!
 zip | String!
 store | [Store](#store)!
 employee | [ [Employee](#employee) ]!
-item_category | [ [ItemCategory](#itemcategory) ]!
-item_modifier | [ [Modifier](#modifier) ]!
-item | [ [Item](#item) ]!
-discount | [ [Discount](#discount) ]!
-tax | [ [Tax](#tax) ]!
+item_category | [ [ItemCategory](#itemcategory) ]! | Not Implemented
+item_modifier | [ [Modifier](#modifier) ]! | Not Implemented
+item | [ [Item](#item) ]! | Not Implemented
+discount | [ [Discount](#discount) ]! | Not Implemented
+tax | [ [Tax](#tax) ]! | Not Implemented
 
 ## Employee
-Attribute Name | Data Type
------------- | :-------------:
+Attribute Name | Data Type | Comment
+ ------------  | :-------: | :-----:
 id | Int!
 outlet | [Outlet](#outlet)!
 store | [Store](#store)!
@@ -73,7 +73,7 @@ email | String!
 password | String!
 confirmed | Boolean!
 active | Boolean!
-transaction | [ [Transaction](#transaction) ]!
+transaction | [ [Transaction](#transaction) ]! | Not Implemented
 
 ## ItemCategory
 Attribute Name | Data Type

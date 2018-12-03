@@ -10,6 +10,7 @@ var Root = graphql.NewObject(
 		Name: "Query",
 		Fields: graphql.Fields{
 			"customerList":      customerList,
+			"employeeList":      employeeList,
 			"itemList":          itemList,
 			"outletList":        outletList,
 			"salesList":         salesList,

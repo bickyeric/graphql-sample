@@ -19,15 +19,14 @@ type Outlet struct {
 
 // Create ...
 func (o Outlet) Create() (Outlet, error) {
-	row, err := database.Connection.Exec(
-		`INSERT INTO outlet(name, address, phone_number, city, state, status, zip, store_id)
-		VALUES (?, ?, ?, ?, ?, ?, ?, ?)`, o.Name, o.Address, o.PhoneNumber, o.City, o.State, o.Status, o.Zip, o.StoreID,
+	_, err := database.Connection.Exec(
+		`INSERT INTO outlet(id, name, address, phone_number, city, state, status, zip, store_id)
+		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`, o.lastID()+1, o.Name, o.Address, o.PhoneNumber, o.City, o.State, o.Status, o.Zip, o.StoreID,
 	)
 	if err != nil {
 		return o, err
 	}
-	id, _ := row.LastInsertId()
-	o.ID = int(id)
+	o.ID = o.lastID()
 	return o, nil
 }
 
@@ -48,6 +47,20 @@ func (o Outlet) All() ([]Outlet, error) {
 	}
 
 	return outlets, nil
+}
+
+// GetByID ...
+func (o Outlet) GetByID() (Outlet, error) {
+	err := database.Connection.QueryRow(
+		`SELECT id, name, address, phone_number, city, state, status, zip, store_id
+		FROM outlet
+		WHERE id=? AND store_id=?`, o.ID, o.StoreID,
+	).Scan(&o.ID, &o.Name, &o.Address, &o.PhoneNumber, &o.City, &o.State, &o.Status, &o.Zip, &o.StoreID)
+	if err != nil {
+		return o, err
+	}
+
+	return o, nil
 }
 
 // GetByStoreID ...
@@ -82,4 +95,17 @@ func (o *Outlet) ItemCategory() ([]ItemCategory, error) {
 // Employee ...
 func (o *Outlet) Employee() ([]Employee, error) {
 	return Employee{StoreID: o.StoreID, OutletID: o.ID}.GetByOutletID()
+}
+
+func (o *Outlet) lastID() int {
+	row := database.Connection.QueryRow(
+		`SELECT id
+		FROM outlet
+		WHERE store_id=?
+		ORDER BY id DESC
+		LIMIT 1`, o.StoreID,
+	)
+	id := 0
+	row.Scan(&id)
+	return id
 }

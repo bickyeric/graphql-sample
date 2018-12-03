@@ -19,7 +19,7 @@ func main() {
 		log.Println(name + "...")
 		err := funcs[name]()
 		if err != nil {
-			log.Println(err)
+			panic(err)
 		}
 	}
 
@@ -31,11 +31,11 @@ var seedNames = []string{
 	"store",
 	"outlet",
 	"employee",
-	"item_category",
-	"item",
-	"variant",
-	"customer",
-	"transaction",
+	// "item_category",
+	// "item",
+	// "variant",
+	// "customer",
+	// "transaction",
 }
 
 var funcs = map[string](func() error){

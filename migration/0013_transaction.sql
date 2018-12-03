@@ -1,6 +1,6 @@
 -- +mig Up
 CREATE TABLE IF NOT EXISTS `transaction` (
-  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id` INT UNSIGNED NOT NULL,
   `receipt_number` VARCHAR(45) NULL,
   `employee_id` INT UNSIGNED NOT NULL,
   `customer_id` INT UNSIGNED NULL,
