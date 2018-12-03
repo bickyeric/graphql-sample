@@ -43,6 +43,10 @@
   ```sh
   make run
   ```
+- Try
+  ```sh
+  curl http://127.0.0.1:1234/graphql?query={storeList{name}} -g
+  ```
 
 ## References
 
